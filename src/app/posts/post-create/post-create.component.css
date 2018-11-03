@@ -1,3 +1,5 @@
 mat-form-field,
 textarea { width: 100%; }
 mat-spinner { margin: auto; }
+.image-btn { margin: 10px 0; text-align: right; }
+.image-btn > input { display: none; }
