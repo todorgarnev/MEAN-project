@@ -1,11 +1,11 @@
 <mat-toolbar color="primary">
   <ul>
     <li>
-      <a routerLink="/">Home</a>
+      <a mat-button routerLink="/" routerLinkActive="mat-accent" [routerLinkActiveOptions]="{ exact: true }">Home</a>
     </li>
 
     <li>
-      <a routerLink="/create">Add new post</a>
+      <a mat-button routerLink="/create" routerLinkActive="mat-accent">Add new post</a>
     </li>
   </ul>
 </mat-toolbar>
