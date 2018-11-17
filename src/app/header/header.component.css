@@ -1,3 +1,3 @@
 ul { list-style: none; padding: 0; margin: 0; display: flex; width: 100%; }
-ul > li:nth-child(3) { margin-left: auto; }
+ul > li:nth-child(1) { margin-right: auto; }
 a { text-decoration: none; color: #fff; }
