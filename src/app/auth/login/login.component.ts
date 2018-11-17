@@ -15,9 +15,10 @@ export class LoginComponent {
   public onLogin(form: NgForm) {
     if (form.invalid) {
       return;
+    } else {
+      this.isLoading = true;
+      this.authService.login(form.value.email, form.value.password);
     }
-
-    this.authService.login(form.value.email, form.value.password);
   }
 
 }
