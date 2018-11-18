@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Subscription } from 'rxjs';
 
 import { AuthService } from '../auth.service';
 
@@ -8,12 +9,20 @@ import { AuthService } from '../auth.service';
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css']
 })
-export class SignupComponent {
+export class SignupComponent implements OnInit, OnDestroy {
   public isLoading: boolean = false;
+  private authStatusSub: Subscription;
 
   constructor(public authService: AuthService) { }
 
-  public onSignup(form: NgForm) {
+  ngOnInit() {
+    this.authStatusSub = this.authService.getAuthStatusListener().subscribe(
+      authStatus => {
+        this.isLoading = false;
+      });
+  }
+
+  onSignup(form: NgForm) {
     if (form.invalid) {
       return;
     } else {
@@ -22,4 +31,7 @@ export class SignupComponent {
     }
   }
 
+  ngOnDestroy() {
+    this.authStatusSub.unsubscribe();
+  }
 }
